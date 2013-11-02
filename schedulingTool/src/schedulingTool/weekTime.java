@@ -21,7 +21,7 @@ package schedulingTool;
 public class weekTime { 
 	private int weekMinutes;
 	private static int MAXWEEKMINUTES = 7*24*60;  // max minutes in week
-	
+		
 	//initialize weekTime clock to 0.
 		public weekTime() {
 		weekMinutes = 0;
@@ -30,7 +30,7 @@ public class weekTime {
 	public weekTime(int weekMins) throws BadTimeException {
 		setWeekTime(weekMins);
 	}
-	
+		
 	/*
 	 * Checks to ensure day and time is within range
 	 * Converts day and time to weekMinutes.
@@ -74,4 +74,13 @@ public class weekTime {
 		
 		return hours*100 + mins;
 	}
+		
+		// Overlap tests for colliding meeting times
+		public boolean isOverlap(int m1, int m2){
+			boolean overlaps = false;
+			if (((m1<m2)&(m2<(m1+59))) | ((m1>m2) & ((m1+59)<m2)) | (m1==m2))
+		      overlaps = true;	
+			return overlaps;
+		}	
+		
 }
