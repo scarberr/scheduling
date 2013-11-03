@@ -11,11 +11,16 @@ package schedulingTool;
  * 0000 hours Monday morning or the day class schedules start.  The maximum clock time for the 
  * day is 2359.  The end of the week (calculated in minutes) is defined as MAXWEEKMINUTES and 
  * is the upper boundary beyond which scheduling can not take place.     
- *   
+ * All scheduled events are 59 minutes in length.  
+ *    
  * This portion of the tool focuses on the functionality of getDay() which will convert minutes 
  * to the day of the week and getTimeofDay() which converts minutes to military time.  Days of the
  * week are noted by 0-6 corresponding to Monday (0) through Sunday (6).  Because
- * classes are scheduled in days and times, it also converts a day and time to the basic unit: weekMinutes.
+ * classes are scheduled in days and times, it also converts a day and time to the basic 
+ * unit: weekMinutes.
+ *
+ *Scheduling overlaps are calculated comparing the start and stop times of two events.  The method
+ *the risk of overlap.
  */
 
 public class weekTime { 
@@ -44,6 +49,8 @@ public class weekTime {
 			throw new BadTimeException("Invalid military time");
 		weekMinutes = day*24*60 + hours*60 + mins;
 	}
+	
+	
 	
 	//set/get week time in week minutes - ensures with-in acceptable range
 	
@@ -75,12 +82,21 @@ public class weekTime {
 		return hours*100 + mins;
 	}
 		
-		// Overlap tests for colliding meeting times
-		public boolean isOverlap(int m1, int m2){
+		//....................
+	public boolean IsOverlap(int m1, int m2) throws BadTimeException {
+			if ((m1 < 0 || m1 >= MAXWEEKMINUTES) || (m2 < 0 || m2 >= MAXWEEKMINUTES))
+				throw new BadTimeException("Invalid minutes");
+			getIsOverlap();
+		}
+		
+		public boolean getIsOverlap() {
 			boolean overlaps = false;
-			if (((m1<m2)&(m2<(m1+59))) | ((m1>m2) & ((m1+59)<m2)) | (m1==m2))
+			if (((m1<m2)&(m2<(m1+59))) | ((m1>m2) & 
+					((m1+59)<m2)) | (m1==m2))
 		      overlaps = true;	
 			return overlaps;
-		}	
+		} 
+		
+		
 		
 }
