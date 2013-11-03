@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class schedulingTest {
 
-	//JUnit Testing for getDay and getTimeOfDay
+	//JUnit Testing for getDay, getTimeOfDay, and isOverlap
 	
 	@Before
 	public void setUp() throws Exception {
@@ -84,7 +84,34 @@ public class schedulingTest {
 			assertEquals("weekTime Failure", 10079, 
 					conwtmax.getWeekTime());
 			
-						
+			//Tests for isOverlap
+			
+			isOverlap ovwtnommin = new isOverlap(3, 0);
+			assertTrue("Failed nom, min Overlap", ovwtnommin); 	
+			
+			//isOverlap ovwtnomminplus = new isOverlap(3, 1);
+			//assertTrue("Failed nom, min+ Overlap", ovwtnomminplus); 
+			
+			//isOverlap ovwtnomnom = new isOverlap(3, 3);
+			//assertTrue("Failed nom, nom Overlap", ovwtnomnom); 
+			
+			//isOverlap ovwtnommaxminus = new isOverlap(3, 10078);
+			//assertFalse("nom, max- Overlap", ovwtnommaxminus); 
+			
+			//isOverlap ovwtnommax = new isOverlap(3, 10079);
+			//assertFalse("Failed nom, max Overlap", ovwtnommax); 
+			
+			//isOverlap ovwtminnom = new isOverlap(0, 3);
+			//assertTrue("Failed nim, nom Overlap", ovwtminnom); 
+			
+			//isOverlap ovwtminplusnom = new isOverlap(1, 3);
+			//assertTrue("Failed min+, nom Overlap", ovwtminplusnom); 
+			
+			//isOverlap ovwtmaxminusnom = new isOverlap(10078, 3);
+			//assertFalse("Failed max-, nom Overlap", ovwtmaxminusnom); 
+			
+			isOverlap ovwtmaxnom = new isOverlap(1079, 3);
+			assertFalse("Failed nom, max- overlap", ovwtmaxnom); 
 		}
 		catch (BadTimeException e) {
 		   fail(e.toString());
