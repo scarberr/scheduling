@@ -25,10 +25,9 @@ package schedulingTool;
 
 public class weekTime { 
 	private int weekMinutes;
-	private static int MAXWEEKMINUTES = 7*24*60;  // max minutes in week
-		
-	//initialize weekTime clock to 0.
-		public weekTime() {
+	private static int MAXWEEKMINUTES = ((7*24*60)-60);  // max minutes in week
+	
+	public weekTime() {
 		weekMinutes = 0;
 	}
 	
