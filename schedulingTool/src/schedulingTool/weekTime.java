@@ -6,24 +6,26 @@ package schedulingTool;
  * represented by the variable weekMinutes.  The weekMinutes variable is the number of
  * minutes in a week starting from midnight Sunday (Monday Morning).  The weekMinutes clock
  * is a 24 hour clock which is also known as military time.  Since graduate students are
- * sometimes thought of as slave labor, the tool allows for scheduling over all week minutes.  
- * It is currently set to look only at a 1 week range.  The week begins at Midnight on Sunday
- * which, on a minute clock, is also 0000 hours Monday morning or the day class schedules start.
- * The maximum clock time for a day is 2359.  The end of the week (calculated in minutes) is
- * defined as MAXWEEKMINUTES and is the upper boundary beyond which scheduling can not take place.    
- * All scheduled events are scheduled for 59 minutes in length to allow the students to plan
- * their days.  There is a special agreement that effects Sunday.  The students lobbied for no 
- * assignments after 11PM on Sundays and the University agreed.
- *    
- * This portion of the tool focuses on the functionality of getDay() which will convert minutes 
- * to the day of the week and getTimeofDay() which converts minutes to military time.  Days of the
- * week are noted by 0-6 corresponding to Monday (0) through Sunday (6).  Because
+ * sometimes thought of as slave labor, the tool allows for scheduling over almost all week
+ * minutes.  Initially, the tool will look only at a 1 week range.  The week begins at 
+ * Midnight on Sunday which, on a minute clock, is also 0000 hours Monday morning or the 
+ * day class schedules start.  The maximum clock time for a day is 2359.  The end of the 
+ * week (calculated in minutes) is defined as MAXWEEKMINUTES and is the upper boundary 
+ * beyond which scheduling can not take place.  All scheduled events are scheduled for 59
+ * minutes in length to allow the students to plan their days.  There is a special agreement
+ * that effects Sunday.  The students lobbied for no assignments after 11PM on Sundays and 
+ * the University agreed.  In exchange, the students agreed to support round the clock data-
+ * center on call assignments with fewer complaints.  
+ * 
+ * This portion of the tool focuses on the functionality of getDay() which will convert
+ * minutes to the day of the week and getTimeofDay() which converts minutes to military time.
+ * Days of the week are noted by 0-6 corresponding to Monday (0) through Sunday (6).  Because
  * classes are scheduled in days and times, it also converts a day and time to the basic 
  * unit: weekMinutes.
  *
- *Scheduling overlaps are calculated comparing the duration of the scheduled event.  Since all 
- *appointments are scheduled for 59 minutes, the stop time is calculated as 59 minutes after 
- *the start time.
+ * Scheduling overlaps are calculated comparing the duration of the scheduled event.  Since all 
+ * appointments are scheduled for 59 minutes, the stop time is calculated as 59 minutes after 
+ * the start time.
  */
 
 public class weekTime { 
